@@ -1,6 +1,6 @@
 from erosao import erosao_binaria
 from dilatacao import dilatacao_binaria
-from printer import printer_dilatacao, printer_erosao,printer_aberta, printer_fechamento
+from printer import printer_all
 import cv2
 
 def main():
@@ -40,18 +40,18 @@ def main():
         match a :
             case 1:
                 erodida_lista = erosao_binaria(binaria_lista, kernel, iteracoes=1)
-                printer_erosao( imagem, binaria, erodida_lista)
+                printer_all( imagem, binaria, erodida_lista, 'erodida')
             case 2:
                 dilatada_lista = dilatacao_binaria(binaria_lista, kernel, iteracoes=1)
-                printer_dilatacao(imagem, binaria, dilatada_lista)
+                printer_all(imagem, binaria, dilatada_lista, 'dilatada')
             case 3:
                 erodida = erosao_binaria(binaria_lista, kernel, iteracoes=1)
                 aberta_lista = dilatacao_binaria(erodida, kernel, iteracoes=1)
-                printer_aberta(imagem, binaria, aberta_lista)
+                printer_all(imagem, binaria, aberta_lista, 'aberta')
             case 4:
                 dilatada = dilatacao_binaria(binaria_lista, kernel, iteracoes=1)
                 fechada_lista = erosao_binaria(dilatada, kernel, iteracoes=1)
-                printer_fechamento(imagem, binaria, fechada_lista)
+                printer_all(imagem, binaria, fechada_lista, 'fechada')
             case 5:
                 break
 
